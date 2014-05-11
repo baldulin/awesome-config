@@ -1,0 +1,12 @@
+Alsa     - Mixer.sakura --class="mixer" -x 'alsamixer ; exit'
+Alsa     - Equalizer.sakura --class="eq" -x 'alsamixer -D equal ; exit'
+W /tmp   - Watch latest in temporary.vlc /tmp/`ls /tmp -t | head -n 1`
+W /Down  - Watch latest download.vlc /home/pharao/Downloads/`ls /home/phara/Downloads -t | head-n 1`
+CMUS     - Musicplayer.sakura --class="Cmus" -x 'cmus ; exit'
+Firefox  - Browser.firefox
+Uzbl     - Browser.uzbl-browser
+Sakura   - Terminal.sakura
+vlc      - Mediaplayer.vlc
+wicd     - Wlan configuration.wicd-client
+Blank    - Enable Screen blanking.xset -dpms;xset s on
+No Blank - Disable Screen blanking.xset -dpms; xset s off
