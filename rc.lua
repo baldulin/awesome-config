@@ -365,7 +365,20 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey,           }, "f",      
+        function (c) 
+            -- If the client is going to fullscreen all the rest 
+            -- is supposed to be minimized
+            c.fullscreen = not c.fullscreen  
+
+            if c.fullscreen then
+                for l,k in pairs(awful.client.visible(c.screen)) do
+                    if k ~= c and k.fullscreen then
+                        k.fullscreen = false
+                    end
+                end
+            end
+        end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
